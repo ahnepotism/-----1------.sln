@@ -1,31 +1,279 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Лаба 1 прога", "Лаба 1 прога\Лаба 1 прога.vcxproj", "{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Debug|x64.ActiveCfg = Debug|x64
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Debug|x64.Build.0 = Debug|x64
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Debug|x86.ActiveCfg = Debug|Win32
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Debug|x86.Build.0 = Debug|Win32
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Release|x64.ActiveCfg = Release|x64
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Release|x64.Build.0 = Release|x64
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Release|x86.ActiveCfg = Release|Win32
-		{16BC9C42-6C1F-4ECC-8A11-85303BBC3C2A}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BA551BD2-D0DC-4971-99A8-7ACDD88145E3}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <locale.h>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+
+	int numOfTask;
+	cout << "Какой номер будем решать?\n";
+	cin >> numOfTask;
+	switch (numOfTask)
+	{
+	case 1:
+		/*1) Вывести, сколько памяти (в байтах) на вашем компьютере отводится
+	под различные типы данных со спецификаторами и без:
+	int, short int, long int, float, double, long double, char и bool.*/
+
+	{
+		int nameOfData;
+		cout << "Введите номер типа данных, информацию про который вы хотите узнать:\n";
+		cout << "1 - int\n";
+		cout << "2 - short int \n";
+		cout << "3 - long int\n";
+		cout << "4 - float\n";
+		cout << "5 - double\n";
+		cout << "6 - long double\n";
+		cout << "7 - char\n";
+		cout << "8 - bool\n";
+		cout << "9 - все типы сразу\n";
+		cin >> nameOfData;
+		switch (nameOfData)
+		{
+		case 1: cout << "int занимает в памяти " << sizeof(int) << " байта";
+			break;
+		case 2: cout << "short int занимает в памяти " << sizeof(short int) << " байта";
+			break;
+		case 3: cout << "long int занимает в памяти " << sizeof(long int) << " байта";
+			break;
+		case 4: cout << "float занимает в памяти " << sizeof(float) << " байта";
+			break;
+		case 5: cout << "double занимает в памяти " << sizeof(double) << " байт";
+			break;
+		case 6: cout << "long double занимает в памяти " << sizeof(long double) << " байт";
+			break;
+		case 7: cout << "char занимает в памяти " << sizeof(char) << " байт";
+			break;
+		case 8: cout << "bool занимает в памяти " << sizeof(bool) << " байт";
+			break;
+		case 9: cout << "int занимает в памяти " << sizeof(int) << " байта\n";
+			cout << "short int занимает в памяти " << sizeof(short int) << " байта\n";
+			cout << "long int занимает в памяти " << sizeof(long int) << " байта\n";
+			cout << "float занимает в памяти " << sizeof(float) << " байта\n";
+			cout << "double занимает в памяти " << sizeof(double) << " байт\n";
+			cout << "long double занимает в памяти " << sizeof(long double) << " байт\n";
+			cout << "char занимает в памяти " << sizeof(char) << " байт\n";
+			cout << "bool занимает в памяти " << sizeof(bool) << " байт\n";
+			break;
+		default:
+			cout << "К сожалению, вы указали неправильное число\n";
+		}
+	}
+	cout << endl;
+	break;
+
+	case 2:
+		/*2) Вывести на экран двоичное представление в памяти (все разряды)
+	целого числа. При выводе необходимо визуально обозначить
+	знаковый разряд и значащие разряды отступами или цветом.*/
+
+	{
+		int ourValue;
+		int order = sizeof(int) * 8;
+		unsigned int mask = 1 << (order - 1);
+		cout << "\nВведите число, котрое вы хотите представить в двоичном виде: ";
+		cin >> ourValue;
+		cout << "\nЧисло " << ourValue << " в двоичном виде будет выглядеть так:\n\n";
+		for (int i = 0; i < order; i++) {
+			if (ourValue & (mask >> i)) {
+				if (i == 0) {
+					cout << "\033[33m1\033[0m";
+				}
+				else {
+					cout << "\033[36m1";
+				}
+			}
+			else {
+				if (i == 0) {
+					cout << "\033[33m0\033[0m";
+				}
+				else {
+					cout << "0";
+				}
+
+			}
+
+		}
+		cout << "\n\033[0m";
+		cout << "\nОбратите внимание на цвет разрядов: \033[33mОранжевым цветом\033[0m выделен знаковый разряд, а \033[36mГолубым цветом\033[0m выделены значащие разряды числа";
+	}
+	break;
+
+	case 3:
+		/*3) Вывести на экран двоичное представление в памяти (все разряды) типа float.
+	При выводе необходимо визуально обозначить знаковый разряд мантиссы,
+	знаковый разряд порядка (если есть), мантиссу и порядок.*/
+
+	{
+		union {
+			int tool;
+			float numbF;
+		} intFloatUnion;
+		cout << "\n\nВведите число, котрое вы хотите представить в двоичном виде: ";
+		cin >> intFloatUnion.numbF;
+		int ourValue = intFloatUnion.tool;
+		cout << "\nЧисло " << intFloatUnion.numbF << " в двоичном виде будет выглядеть так:\n\n";
+		int order = sizeof(int) * 8;
+		unsigned int mask = 1 << (order - 1);
+		for (int i(0); i < order; i++)
+		{
+			if (ourValue & (mask >> i)) {
+				if (i == 0) {
+					cout << "\033[33m1\033[0m";
+				}
+				else if (i > 0 && i < 9) {
+					cout << "\033[36m1\033[0m";
+				}
+				else {
+					cout << "\033[0m1";
+				}
+			}
+			else {
+				if (i == 0) {
+					cout << "\033[33m0\033[0m";
+				}
+				else if (i > 0 && i < 9) {
+					cout << "\033[36m0\033[0m";
+				}
+				else {
+					cout << "\033[0m0";
+				}
+			}
+
+		}
+		cout << "\n\033[0m";
+		cout << "\nОбратите внимание на цвет разрядов: \033[33mОранжевым цветом\033[0m выделен знаковый разряд, \033[36mГолубым цветом\033[0m выделена экспонента, а белым - мантисса\n";
+	}
+	cout << "\n";
+	break;
+
+	case 4:
+		/*4) Вывести на экран двоичное представление в памяти (все разряды) типа double.
+	При выводе необходимо визуально обозначить знаковый разряд мантиссы,
+	знаковый разряд порядка (если есть), мантиссу и порядок. (*)*/
+
+	{
+		union {
+			int tool[2];
+			double num;
+		} intDoubleUnion;
+		int numOfSigns = 0; //счётчик разрядов для выделения важных байтов цветом
+		cout << "\n\nВведите число, котрое вы хотите представить в двоичном виде: ";
+		cin >> intDoubleUnion.num;
+		cout << "\nЧисло " << intDoubleUnion.num << " в двоичном виде будет выглядеть так:\n\n";
+		int order = sizeof(int) * 8;
+		for (int counter(1); counter > -1; counter--) {
+			unsigned int mask = 1 << (order - 1);
+			for (int i(0); i < order; i++) {
+				if (intDoubleUnion.tool[counter] & (mask >> i)) {
+					if (numOfSigns == 0) {
+						cout << "\033[33m1\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns == 9) {
+						cout << "\033[35m1\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns == 1) {
+						cout << "\033[31m1\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns > 1 && numOfSigns < 9) {
+						cout << "\033[36m1\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns > 9) {
+						cout << "\033[0m1\033[0m";
+						numOfSigns += 1;
+					}
+				}
+				else {
+					if (numOfSigns == 0) {
+						cout << "\033[33m0\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns == 1) {
+						cout << "\033[31m0\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns == 9) {
+						cout << "\033[35m0\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns > 1 && numOfSigns < 9) {
+						cout << "\033[36m0\033[0m";
+						numOfSigns += 1;
+					}
+					else if (numOfSigns > 9) {
+						cout << "0";
+						numOfSigns += 1;
+					}
+				}
+			}
+		}
+		cout << "\nОбратите внимание на цвет разрядов: \033[33mОранжевым цветом\033[0m выделен знаковый разряд, \033[31mКрасным цветом\033[0m выделен знаковый разряд порядка, \033[36mГолубым цветом\033[0m выделен порядок, \033[35mПурпурным цветом\033[0m выделен знаковый разряд мантиссы, а белым - мантисса\n";
+	}
+	break;
+	case 5:
+		int num;
+		int numOfBit;
+		cout << "Введите число, с которым мы будем работать: ";
+		cin >> num;
+		cout << "Введите индекс бита, который будем инвертировать: ";
+		cin >> numOfBit;
+		cout << "Ваше число в двоичной системе выглядит так:\n";
+		int order = sizeof(int) * 8;
+		unsigned int zeroMask = 1 << (order - 1);
+		for (int i = 0; i < order; i++) {
+			if (num & (zeroMask >> i)) {
+				if (i == 0) {
+					cout << "\033[33m1\033[0m";
+				}
+				else {
+					cout << "\033[36m1";
+				}
+			}
+			else {
+				if (i == 0) {
+					cout << "\033[33m0\033[0m";
+				}
+				else {
+					cout << "0";
+				}
+
+			}
+		}
+		cout << "\033[0m";
+		int mask = 1 << numOfBit;
+		int newNum = num ^ mask;
+		int newOrder = sizeof(int) * 8;
+		unsigned int newMask = 1 << (newOrder - 1);
+
+		cout << "\n\n";
+		for (int i = 0; i < order; i++) {
+			if (newNum & (newMask >> i)) {
+				if (i == 0) {
+					cout << "\033[33m1\033[0m";
+				}
+				else {
+					cout << "\033[36m1";
+				}
+			}
+			else {
+				if (i == 0) {
+					cout << "\033[33m0\033[0m";
+				}
+				else {
+					cout << "0";
+				}
+
+			}
+		}
+		cout << "\n\033[0mРезультат работы программы: ваше число было преобразованно в " << newNum;
+		break;
+	}
+		
+	
+
+}	
+
+
