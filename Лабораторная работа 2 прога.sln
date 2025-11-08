@@ -1,31 +1,450 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Лабораторная работа 2 прога", "Лабораторная работа 2 прога.vcxproj", "{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Debug|x64.ActiveCfg = Debug|x64
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Debug|x64.Build.0 = Debug|x64
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Debug|x86.ActiveCfg = Debug|Win32
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Debug|x86.Build.0 = Debug|Win32
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Release|x64.ActiveCfg = Release|x64
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Release|x64.Build.0 = Release|x64
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Release|x86.ActiveCfg = Release|Win32
-		{10C9BEEF-B5CD-4402-81B6-3B9C64CFF26C}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BBDC24B3-7686-4883-97C7-D5C04B3929A0}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <chrono>
+
+
+using namespace std;
+using namespace chrono;
+int userchoice;
+int const maxLenOfMass = 100;
+int const maxx = 99;
+int const minn = -99;
+
+
+
+void taskOne(int* arr) {
+	
+	for (int i(0); i < maxLenOfMass; i++) {
+		arr[i] = rand() % (maxx - minn + 1) + minn;
+	}
+}
+
+void getMass(int* arr) {
+	cout << "\n\nВаш массив:\n";
+	for (int i(0); i < maxLenOfMass; i++) {
+		cout << arr[i] << ' ';
+	}
+}
+
+void taskTwo(int* arr) {
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start, end;
+	nanoseconds result11;
+	auto start1 = steady_clock::now();
+	bool swapped;
+	for (int i = 0; i < 100; ++i) {
+		swapped = false;
+		for (int j = 0; j < 100 - 1; ++j) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (!swapped) {
+			break;
+		}
+	}
+	cout << "\n\n";
+	for (int i(0); i < 100; i++) {
+		cout << arr[i] << ' ';
+	}
+
+	auto end1 = steady_clock::now();
+	auto result1 = duration_cast<nanoseconds>(end1 - start1);
+	cout << "\n\nВремя, затраченное на сортировку массива: " << result1.count();
+
+}
+
+void taskThree(int* arr) {
+	int maxi = arr[0];
+	int mini = arr[0];
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start31, end31;
+	nanoseconds result31;
+	auto start3 = steady_clock::now();
+	for (int i(1); i < maxLenOfMass; i++) {
+		if (maxi < arr[i]) {
+			maxi = arr[i];
+		}
+		if (mini > arr[i]) {
+			mini = arr[i];
+		}
+	}
+	cout << "\nМаксимальное значение: " << maxi << " Минимальное значение: " << mini << '\n';
+	auto end3 = steady_clock::now();
+	auto result3 = duration_cast<nanoseconds>(end3 - start3);
+	cout << "Время, затраченное на поиск максимального и минимального элементов неотсортированного массива: " << result3.count() << "\n\n";
+
+	bool swapped;
+	for (int i = 0; i < 100; ++i) {
+		swapped = false;
+		for (int j = 0; j < 100 - 1; ++j) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (!swapped) {
+			break;
+		}
+	}
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start21, end21;
+	nanoseconds result21;
+	auto start2 = steady_clock::now();
+	cout << "\nМаксимальное значение: " << arr[99] << " Минимальное значение: " << arr[0] << '\n';
+	auto end2 = steady_clock::now();
+	auto result2 = duration_cast<nanoseconds>(end2 - start2);
+	cout << "Время, затраченное на поиск максимального и минимального элементов отсортированного массива: " << result2.count() << "\n\n";
+}
+
+void taskFour(int* arr) {
+	int maxi = arr[0];
+	int mini = arr[0];
+	for (int i(1); i < maxLenOfMass; i++) {
+		if (maxi < arr[i]) {
+			maxi = arr[i];
+		}
+		if (mini > arr[i]) {
+			mini = arr[i];
+		}
+	}
+	cout << "\n\nНеотсортированный массив:";
+	
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start41, end41;
+	nanoseconds result41;
+	auto start4 = steady_clock::now();
+	int summaNeSort = (maxi + mini) / 2;
+	cout << "\n\n" << "Минимальное значение: " << mini << " Максимальное значение: " << maxi << " Среднее значение: " << summaNeSort;
+	int counter = 0;
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (arr[i] == summaNeSort) {
+			if (counter == 0) {
+				cout << "\n\nИндексы элементов: ";
+			}
+			counter += 1;
+			cout << i << " ";
+		}
+	}
+	
+	cout << "\nЧисло встречается в массиве " << counter << " Раз";
+	auto end4 = steady_clock::now();
+	auto result4 = duration_cast<nanoseconds>(end4 - start4);
+	cout << "\nВремя, затраченное на поиск чисел в неотсортированном массиве: " << result4.count();
+
+	cout << "\n\nОтсортированный массив:\n";
+	bool swapped;
+	for (int i = 0; i < 100; ++i) {
+		swapped = false;
+		for (int j = 0; j < 100 - 1; ++j) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (!swapped) {
+			break;
+		}
+	}
+
+
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start51, end51;
+	nanoseconds result51;
+	auto start5 = steady_clock::now();
+
+	int summaSort = (arr[0] + arr[99]) / 2;
+	cout << "\n" << "Минимальное значение: " << arr[0] << " Максимальное значение: " << arr[99] << " Среднее значение: " << summaSort;
+	int counterSort = 0;
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (arr[i] == summaSort + 1) {
+			break;
+		}
+		if (arr[i] == summaSort) {
+			if (counterSort == 0) {
+				cout << "\n\nИндексы элементов: ";
+			}
+			counterSort += 1;
+			cout << i << " ";
+		}
+	}
+	
+	cout << "\nЧисло встречается в массиве " << counterSort << " Раз";
+	auto end5 = steady_clock::now();
+	auto result5 = duration_cast<nanoseconds>(end5 - start5);
+	cout << "\nВремя, затраченное на поиск чисел в отсортированном массиве: " << result5.count() << "\n\n";
+
+}
+
+void bubbleSort(int* arr) {
+	bool swapped;
+	for (int i = 0; i < maxLenOfMass; ++i) {
+		swapped = false;
+		for (int j = 0; j < maxLenOfMass - 1; ++j) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (!swapped) {
+			break;
+		}
+	}
+}
+
+void taskFive(int* arr) {
+	int userChoice;
+	int counterOfNums = 0;
+	cout << "\n\nВведите число, от которого будем отталкиваться: ";
+	cin >> userChoice;
+	for (int i(0); arr[i] < userChoice + 1; i++) {
+		if (arr[i] < userChoice) {
+			counterOfNums += 1;
+		}
+	}
+	cout << "\nЧисла, которые меньше вашего числа " << userChoice << " встречается в массиве " << counterOfNums << " раз\n\n";
+}
+
+void taskSix(int* arr) {
+	int userChoice;
+	int counterOfNums = 0;
+	cout << "\n\nВведите число, от которого будем отталкиваться: ";
+	cin >> userChoice;
+	for (int i(99); arr[i] > userChoice - 1; i--) {
+		if (arr[i] > userChoice) {
+			counterOfNums += 1;
+		}
+	}
+	cout << "\nЧисла, которые больше вашего числа " << userChoice << " встречается в массиве " << counterOfNums << " раз\n\n";
+}
+
+void taskSeven(int* arr) {
+	int userChoice;
+	int answer = 0;
+	cout << "\n\nВведите число, которое будем искать: ";
+	cin >> userChoice;
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start61, end61;
+	nanoseconds result61;
+	auto start6 = steady_clock::now();
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (arr[i] == userChoice) {
+			answer = i;
+			break;
+		}
+	}
+	if (answer > 1) {
+		cout << "\nВаше число " << userChoice << " впервые встречается в массиве на позиции " << answer << "\n";
+	}
+	else {
+		cout << "\nВаше число " << userChoice << " не встречается в массиве\n";
+	}
+	auto end5 = steady_clock::now();
+	auto result6 = duration_cast<nanoseconds>(end5 - start6);
+	cout << "\nВремя, затраченное на поиск чисел в отсортированном массиве: " << result6.count() << "\n";
+}
+
+void binarSearch(int* arr) {
+	int userChoice;
+	int leftFlag = 0;
+	int answer = 0;
+	int riightFlag =  maxLenOfMass - 1;
+
+	cout << "\n\nВведите число, которое будем искать: ";
+	cin >> userChoice;
+
+	time_point<steady_clock, duration<__int64, ratio<1, 1000000000>>> start71, end71;
+	nanoseconds result71;
+	auto start7 = steady_clock::now();
+
+	while (leftFlag <= riightFlag) {
+		int middlePoint = leftFlag + (riightFlag - leftFlag) / 2;
+
+		if (arr[middlePoint] == userChoice) {
+			answer = middlePoint;
+			break;
+		}
+		else if (arr[middlePoint] < userChoice) {
+			leftFlag = middlePoint + 1;
+		}
+		else {
+			riightFlag = middlePoint - 1;
+		}
+	}
+	if (answer > 1) {
+		cout << "\nВаше число " << userChoice << " впервые встречается в массиве на позиции " << answer << "\n";
+	}
+	else {
+		cout << "\nВаше число " << userChoice << " не встречается в массиве\n";
+	}
+	auto end7 = steady_clock::now();
+	auto result7 = duration_cast<nanoseconds>(end7 - start7);
+	cout << "\nВремя, затраченное на поиск чисел в отсортированном массиве: " << result7.count() << "\n";
+}
+
+void taskEight(int* arr) {
+	int numberOne, numberTwo;
+	int indexOne, indexTwo = 0;
+	cout << "\nВведите первое число: ";
+	cin >> numberOne;
+	cout << "\nВведите второе число: ";
+	cin >> numberTwo;
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (arr[i] == numberOne) {
+			indexOne = i;
+		}
+		if (arr[i] == numberTwo) {
+			indexTwo = i;
+		}
+	}
+	cout << "\nДо изменений наш массив выглядит так:\n";
+
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (i == indexOne || i == indexTwo) {
+			cout << "\033[31m" << arr[i] << " \033[0m";
+		}
+		else {
+			cout << arr[i] << ' ';
+		}
+	}
+
+	arr[indexOne] = numberTwo;
+	arr[indexTwo] = numberOne;
+
+	cout << "\nПосле изменений наш массив выглядит так:\n";
+
+	for (int i(0); i < maxLenOfMass; i++) {
+		if (i == indexOne || i == indexTwo) {
+			cout << "\033[31m" << arr[i] << " \033[0m";
+		}
+		else {
+			cout << arr[i] << ' ';
+		}
+	}
+}
+
+
+long long idzNineteen(int arr[], int temp[], int left, int middle, int right) {
+	long long answer = 0;
+	int i, j, k;
+	i = left;
+	j = middle;
+	k = left;
+	while ((i <= middle - 1) && (j <= right)) {
+		if (arr[i] <= arr[j]) {
+			temp[k++] = arr[i++];
+		}
+		else {
+	
+			temp[k++] = arr[j++];
+			answer += middle - i;
+		}
+	}
+	while (i <= middle - 1) {
+		temp[k++] = arr[i++];
+	}
+	while (j <= right) {
+		temp[k++] = arr[j++];
+	}
+	for (i = left; i <= right; i++) {
+		arr[i] = temp[i];
+	}
+
+	return answer;
+}
+
+long long counterOfNums(int arr[], int temp[], int left, int right) {
+	long long answer = 0;
+	if (right > left) {
+		int middle = (left + right) / 2;
+		answer += counterOfNums(arr, temp, left, middle);
+		answer += counterOfNums(arr, temp, middle + 1, right);
+		answer += idzNineteen(arr, temp, left, middle + 1, right);
+	}
+	return answer;
+}
+
+long long printerOfInversion(int arr[], int lenOfMass) {
+	int* temp = new int[lenOfMass];
+	long long result = counterOfNums(arr, temp, 0, lenOfMass - 1);
+	delete[] temp;
+	return result;
+}
+
+
+int main() {
+	setlocale(LC_ALL, "");
+	srand(time(NULL));
+	int massiv[maxLenOfMass];
+	int massIDZ[maxLenOfMass];
+	while (true) {
+
+		cout << "\n\nВыберите комманду: \n";
+		cout << "1 - задание 1\n";
+		cout << "2 - задание 2\n";
+		cout << "3 - задание 3\n";
+		cout << "4 - задание 4\n";
+		cout << "5 - задание 5\n";
+		cout << "6 - задание 6\n";
+		cout << "7 - задание 7\n";
+		cout << "8 - задание 8\n";
+		cout << "9 - ИДЗ 19\n";
+		cout << "0 - выход\n";
+		cout << "Ваш выбор: ";
+		cin >> userchoice;
+		switch (userchoice) {
+		case 1:
+			taskOne(massiv);
+			getMass(massiv);
+			break;
+
+		case 2:
+			taskTwo(massiv);
+			break;
+
+		case 3:
+			taskThree(massiv);
+			getMass(massiv);
+			break;
+
+		case 4:
+			taskFour(massiv);
+			break;
+
+		case 5:
+			bubbleSort(massiv);
+			getMass(massiv);
+			taskFive(massiv);
+			break;
+
+		case 6:
+			bubbleSort(massiv);
+			getMass(massiv);
+			taskSix(massiv);
+			break;
+
+		case 7:
+			bubbleSort(massiv);
+			getMass(massiv);
+			taskSeven(massiv);
+			cout << "\nТеперь воспользуемся бинарным поиском: ";
+			binarSearch(massiv);
+			break;
+
+		case 8:
+			taskOne(massiv);
+			bubbleSort(massiv);
+			getMass(massiv);
+			taskEight(massiv);
+			break;
+
+		case 9:
+			taskOne(massIDZ);
+			getMass(massIDZ);
+			cout << "\nКоличество инверсий: " <<  printerOfInversion(massIDZ, maxLenOfMass) << "\n\n";
+			break;
+		default:
+			std::cout << "Неверный выбор. Пожалуйста, попробуйте снова.";
+			break;
+		case 0:
+			return 0;
+			break;
+		}
+	}
+}
+	
+
