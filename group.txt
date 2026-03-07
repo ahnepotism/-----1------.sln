@@ -1,0 +1,169 @@
+Avhimenko Igor Andreevich
+0
+1
+5372
+3 4 3 4 5 5 5 4
+
+
+Belokon Anastsia Artemovna
+1
+2
+5372
+3 5 5 5 3 4 5 5
+
+Vinogradov Egor Dmitrievich
+0
+3
+5372
+5 4 5 5 4 5 3 5
+
+Vlasova Polina Alexandrovna
+1
+4
+5372
+5 5 3 3 4 4 3 4
+
+Ermakov Dmitriy Valeryevich
+0
+5
+5372
+5 5 5 4 4 5 4 4
+
+Kaplyuk Yuriy Vitalyevich
+0
+6
+5372
+3 3 3 4 4 4 4 4
+
+Kudarenko Yaroslav Andreevich
+0
+7
+5372
+3 3 3 4 4 3 3 4
+
+Kulikov Ivan Sergeevich
+0
+8
+5372
+3 4 4 4 4 5 5 4
+
+Kurilovich Alexandr Glebovich
+0
+9
+5372
+3 4 4 3 3 3 4 4
+
+Listopadov Ivan Alexeevich
+0
+10
+5372
+3 4 5 4 4 4 5 4
+
+Lonshakov Mihail Alexeevich
+0
+11
+5372
+3 3 4 4 4 3 4 5
+
+Maltsev Fedor Mihaylovich
+0
+12
+5372
+4 5 5 4 5 5 5 4
+
+Mokretsov Maksim Alexeevich
+0
+13
+5372
+5 5 5 5 5 5 5 5
+
+Mukovoz Artem Igorevich
+0
+14
+5372
+3 3 3 4 4 3 4 4
+
+Muchangi Dennis Kiarie
+0
+15
+5372
+3 3 3 3 3 3 3 3
+
+Nze Rebekka Tendresse
+1
+16
+5372
+3 3 3 4 4 4 3 3
+
+Pavlenko Pavel Sergeevich
+0
+17
+5372
+4 5 5 4 5 5 4 5
+
+Rakovitsa Valeria Yuryevna
+1
+18
+5372
+3 4 3 4 4 3 5 4
+
+Singh Amandip Aman
+0
+19
+5372
+3 3 3 3 3 3 3 3
+
+Smolinov Matvey Valeryevich
+0
+20
+5372
+3 4 4 3 3 3 4 5
+
+Sunguahanga Sipriano Heronimo
+0
+21
+5372
+3 4 4 4 4 4 3 4
+
+Telushkov Arseniy Vladimirovich
+0
+22
+5372
+3 3 3 4 3 3 4 3
+
+Trofimov Evgeniy Olegovich
+0
+23
+5372
+3 4 4 3 5 5 4 4
+
+Ulanov Sergey Evgenievich
+0
+24
+5372
+4 4 5 4 5 5 5 5
+
+Tsvetov Ivan Sergeevich
+0
+25
+5372
+3 4 4 4 4 4 3 4
+
+Shapavalov Artem Anatolievich
+0
+26
+5372
+3 3 3 3 3 3 3 3
+
+Shipov Vladislav Vyacheslavovich
+0
+27
+5372
+3 3 3 3 3 3 3 3
+
+Shekaturov Artem Olegovich
+0
+28
+5372
+3 3 4 4 3 4 5 4
+
